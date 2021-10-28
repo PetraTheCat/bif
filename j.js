@@ -10,7 +10,14 @@ function upd(){
 	  var fhrs = (s - mins) / 60;
 	  var hrs = fhrs % 24;
 	  var ds = (fhrs - hrs) / 24; 
-	document.getElementById("time").innerHTML = ds + ":" + hrs + ':' + mins + ':' + secs;
+	document.getElementById("time").innerHTML = ds + ":" + prettify(hrs) + ':' + prettify(mins) + ':' + prettify(secs);
 }
+function prettify(inp){
+	if (inp.toString().length == 1)
+		return '0' + inp.toString()
+	return '' + inp.toString()
+}
+
 upd();
 setInterval(upd, 1000);
+
